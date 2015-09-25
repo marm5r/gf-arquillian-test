@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="download-payara-embedded-pre" default="run" basedir=".">
+
+    <property file="payara-pre.properties"/>
+    
+    <target name="-check-gf">
+        <available file="lib/${fish.jar}" property="gfdist.present"/>
+    </target>
+    
+    <target name="-get-gf" depends="-check-gf" unless="gfdist.present">
+        <mkdir dir="lib"/>
+        <get src="${fish.url}" dest="lib"/>
+    </target>
+    
+    <target name="run" depends="-get-gf">
+    </target>
+    
+</project>
